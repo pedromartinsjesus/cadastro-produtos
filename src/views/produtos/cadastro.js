@@ -3,7 +3,7 @@ import React from 'react';
 export default class CadastroProduto extends React.Component {
     render() {
         return (
-            <>
+            <div>
                 <div className="card">
                     <div className="card-header">
                         Cadastro de produto
@@ -37,20 +37,18 @@ export default class CadastroProduto extends React.Component {
                          <div className="col-md-6">
                               <div className="form-group">
                                 <label>Preço: </label>
-                                <textarea className="form-control"/> 
+                                <input type="text" className="form-control"/> 
                               </div>
                          </div>
-                     </div>
-                     <div className="row">
                          <div className="col-md-6">
                               <div className="form-group">
                                 <label>Fornecedor: </label>
-                                <textarea className="form-control"/> 
+                                <input type="text" className="form-control"/> 
                               </div>
                          </div>
                      </div>
-
-                     <div className="row">
+                      <hr/>
+                          <div className="row">
                             <div className="col-md-1">
                              <button className="btn btn-success">Salvar</button>
                             </div>
@@ -60,7 +58,7 @@ export default class CadastroProduto extends React.Component {
                      </div>
                     </div>
                 </div>
-            </>
+            </div>
         )
     }
 }
