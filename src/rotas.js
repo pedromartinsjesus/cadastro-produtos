@@ -14,8 +14,6 @@ export default () => {
                     <Route exact path="/" component={Home} />
                 </Switch>
             </HashRouter>
-
         </>
     )
-
 }
