@@ -1,15 +1,18 @@
 import React from 'react';
 
+
+
+const estadoInicial = {
+    nome: '',
+    sku: '',
+    descricao: '',
+    preco: '0',
+    fornecedor: ''
+}
+
 export default class CadastroProduto extends React.Component {
-   
-   
-   state = {
-       nome: '',
-       sku: '',
-       descricao: '',
-       preco: '0',
-       fornecedor: ''
-   }
+    
+   state = estadoInicial;
 
    onChange = (event) =>{
 
@@ -22,6 +25,10 @@ export default class CadastroProduto extends React.Component {
 
 onSubmit = () =>{
     console.log(this.state);
+}
+
+limpaCampos = () =>{
+    this.setState(estadoInicial);
 }
 
     render() {
@@ -37,7 +44,7 @@ onSubmit = () =>{
                           <div className="col-md-6">
                           <div className="form-group">
                                <label>Nome: *</label>
-                               <input type="text" onChange={this.onChange}  name='nome' className="form-control"/>
+                               <input type="text" onChange={this.onChange} value={this.state.nome} name='nome' className="form-control"/>
                           </div>
                           </div>
                           <div className="col-md-6">
@@ -76,7 +83,7 @@ onSubmit = () =>{
                              <button onClick={this.onSubmit} className="btn btn-success">Salvar</button>
                             </div>
                             <div className="col-md-1">
-                             <button className="btn btn-primary">Limpar</button>
+                             <button onClick={this.limpaCampos} className="btn btn-primary">Limpar</button>
                             </div>
                      </div>
                     </div>
