@@ -1,5 +1,5 @@
 import React from 'react';
-
+import ProdutoService from '../../app/produtoService';
 
 
 const estadoInicial = {
@@ -13,6 +13,11 @@ const estadoInicial = {
 
 export default class CadastroProduto extends React.Component {
     
+    constructor(){
+        super()
+        this.service = new ProdutoService();
+    }
+    
    state = estadoInicial;
 
    onChange = (event) =>{
@@ -25,7 +30,17 @@ export default class CadastroProduto extends React.Component {
    
 
 onSubmit = () =>{
-    console.log(this.state);
+const produto = {
+    nome: this.state.nome,
+    sku:this.state.sku,
+    descricao:this.state.descricao,
+    preco: this.state.preco,
+    fornecedor:this.state.fornecedor,
+}
+
+   this.service.salvar(produto);
+   this.setState({sucesso:true});
+    
 }
 
 limpaCampos = () =>{
@@ -45,7 +60,7 @@ limpaCampos = () =>{
                    { this.state.sucesso ?
                     <div className="alert alert-dismissible alert-success">
                        <button type="button" className="btn-close" data-bs-dismiss="alert"></button>
-                       <strong>Well done!</strong> You successfully read <a href="#" className="alert-link">this important alert message</a>.
+                       <strong>Muito bem </strong>     Cadastro realizado com sucesso 
                      </div>
                      :
                      <></>
