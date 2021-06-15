@@ -7,7 +7,8 @@ const estadoInicial = {
     sku: '',
     descricao: '',
     preco: '0',
-    fornecedor: ''
+    fornecedor: '',
+    sucesso: false,
 }
 
 export default class CadastroProduto extends React.Component {
@@ -40,6 +41,16 @@ limpaCampos = () =>{
            
                     </div>
                     <div className="card-body">
+
+                   { this.state.sucesso ?
+                    <div className="alert alert-dismissible alert-success">
+                       <button type="button" className="btn-close" data-bs-dismiss="alert"></button>
+                       <strong>Well done!</strong> You successfully read <a href="#" className="alert-link">this important alert message</a>.
+                     </div>
+                     :
+                     <></>
+                    }
+
                      <div className="row">
                           <div className="col-md-6">
                           <div className="form-group">
