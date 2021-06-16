@@ -4,7 +4,7 @@ const PRODUTOS = '_PRODUTOS';
 
 export function ErroValidacao(errors) {
     this.errors = errors;
-    console.log('ErroValidacao')
+
 }
 
 export default class ProdutoService {

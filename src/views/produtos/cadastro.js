@@ -31,7 +31,6 @@ export default class CadastroProduto extends React.Component {
    
 
 onSubmit = () =>{
-    console.log('onSubmit')
     const produto = {
     nome: this.state.nome,
     sku:this.state.sku,
@@ -40,14 +39,15 @@ onSubmit = () =>{
     fornecedor:this.state.fornecedor,
 }
 
-
 try{
     this.service.salvar(produto);
     this.limpaCampos();
     this.setState({sucesso:true});
 }catch(erro){
+    
      const errors = erro.errors;
      this.setState({errors:errors});
+    
 }
 
   
@@ -59,6 +59,7 @@ limpaCampos = () =>{
 }
 
     render() {
+       
         return (
             <div>
                 <div className="card">
@@ -68,27 +69,26 @@ limpaCampos = () =>{
                     </div>
                     <div className="card-body">
 
-                   { this.state.sucesso ?
+                   { this.state.sucesso &&
                     <div className="alert alert-dismissible alert-success">
                        <button type="button" className="btn-close" data-bs-dismiss="alert"></button>
                        <strong>Muito bem </strong>     Cadastro realizado com sucesso 
                      </div>
-                     :
-                     <>
-                     </>
+                   
                     }
 
-                  { this.state.errors.length > 0 ?
-
-                  this.state.errors.map(msg =>{
-                    <div className="alert alert-dismissible alert-danger">
+                  { this.state.errors.length > 0 &&
+                                    
+                  this.state.errors.map((msg,i) =>{
+                      return(
+                    <div key={i}className="alert alert-dismissible alert-danger">
                     <button type="button" className="btn-close" data-bs-dismiss="alert"></button>
                     <strong>Erro </strong> {msg}  
-                  </div>
-                  })
-                    :
-                     <>
-                     </>
+                  </div> 
+                      )
+                  }
+                  )
+                    
                     }
 
                      <div className="row">
