@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ProdutoService from '../../app/produtoService';
-import { withRouter } from 'react-router-dom';
+
+import { withRouter } from 'react-router';
+
 
 
 class ConsultaProdutos extends Component {
@@ -12,6 +14,8 @@ class ConsultaProdutos extends Component {
     constructor() {
         super()
         this.service = new ProdutoService();
+
+
     }
 
     componentDidMount() {
@@ -20,8 +24,10 @@ class ConsultaProdutos extends Component {
     }
 
     preparaEditar = (sku) => {
-        console.log(sku)
-        this.props.history.push(`/cadastro-produtos/${sku}`)
+        this.props.history.push({
+            pathname: "cadastro-produtos",
+            state: sku
+        });
     }
 
 

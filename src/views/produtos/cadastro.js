@@ -1,5 +1,7 @@
 import React from 'react';
 import ProdutoService from '../../app/produtoService';
+import {withRouter} from 'react-router-dom';
+
 
 
 const estadoInicial = {
@@ -12,7 +14,8 @@ const estadoInicial = {
     errors:[],
 }
 
-export default class CadastroProduto extends React.Component {
+
+class CadastroProduto extends React.Component {
     
     constructor(){
         super()
@@ -29,6 +32,19 @@ export default class CadastroProduto extends React.Component {
      
    }
    
+
+   componentDidMount(){
+       const sku = this.props.history.location.state;
+
+       if(sku){
+           const resultado = this.service.obterProdutos().filter(produto => produto.sku === sku);
+           if (resultado.length === 1){
+               const produtoEncontrado = resultado[0];
+               this.setState({...produtoEncontrado})
+           }
+       }
+    
+   }
 
 onSubmit = () =>{
     const produto = {
@@ -144,3 +160,4 @@ limpaCampos = () =>{
     }
 }
 
+export default withRouter(CadastroProduto);
