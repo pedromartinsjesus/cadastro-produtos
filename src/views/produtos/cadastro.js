@@ -35,9 +35,10 @@ class CadastroProduto extends React.Component {
 
    componentDidMount(){
        const sku = this.props.history.location.state;
-
+     
        if(sku){
            const resultado = this.service.obterProdutos().filter(produto => produto.sku === sku);
+                   
            if (resultado.length === 1){
                const produtoEncontrado = resultado[0];
                this.setState({...produtoEncontrado})
