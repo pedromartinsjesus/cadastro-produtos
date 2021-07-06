@@ -14,13 +14,11 @@ class ConsultaProdutos extends Component {
     constructor() {
         super()
         this.service = new ProdutoService();
-
-
     }
 
     componentDidMount() {
-        const produtos = this.service.obterProdutos()
-        this.setState({ produtos: produtos })
+        const produtos = this.service.obterProdutos();
+        this.setState({ produtos: produtos });
     }
 
     preparaEditar = (sku) => {
@@ -28,6 +26,11 @@ class ConsultaProdutos extends Component {
             pathname: "cadastro-produtos",
             state: sku
         });
+    }
+
+    deletar = (sku) => {
+        const produtos = this.service.deletar(sku);
+        this.setState({ produtos: produtos });
     }
 
 
@@ -58,7 +61,7 @@ class ConsultaProdutos extends Component {
                                         <td>{produto.fornecedor}</td>
                                         <td>
                                             <button onClick={() => this.preparaEditar(produto.sku)} className="btn btn-primary">Editar</button>
-                                            <button className="btn btn-danger">Remover</button>
+                                            <button onClick={() => this.deletar(produto.sku)} className="btn btn-danger">Remover</button>
                                         </td>
 
                                     </tr>
