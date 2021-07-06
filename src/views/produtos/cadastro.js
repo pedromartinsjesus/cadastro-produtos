@@ -67,9 +67,6 @@ class CadastroProduto extends React.Component {
             this.setState({ errors: errors });
 
         }
-
-
-
     }
 
     limpaCampos = () => {
